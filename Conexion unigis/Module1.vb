@@ -3,8 +3,15 @@
     Sub Main()
 
         'Dentro de la solución se agregó una referencia de servicio web soap'
-        'la referencia de servicio tiene el nombre de WS_UNIGIS'
+        'la referencia de servicio tiene el nombre de WS_UNIGIS y almacena los datos que ofrece el ws de unigis'
 
+        'Si se requiere cambiar la referencia o crearla desde 0 en tu sistema principal entonces:'
+        '=> Abre el explorador de soluciones'
+        '=> ´Si estás creando la referencia desde 0 omite este paso **** En la seccion de "Connected Services" Eliminar la referencia WS_UNIGIS '
+        '=> Busca la sección de "Referencias" da clic derecho y selecciona la opcion de "Agregar referencia de servicio" y se abrirá un modal'
+        '=> Sobre el campo de dirección pega la ruta del asmx ej. http://186.122.152.69/unigis_mx/MAPI/SOAP/GPS/Service.asmx y da clic sobre el botón "Ir"'
+        '=> Sobre el campo "Espacio de nombres" agrega el nombre WS_UNIGIS'
+        '=> Da clic sobre aceptar y automáticamente se agregará toda la información del ws de unigis'
 
         'Generamos un nuevo cliente de soap'
         Dim client As WS_UNIGIS.ServiceSoapClient = New WS_UNIGIS.ServiceSoapClient()
@@ -31,7 +38,7 @@
             Dim indexResponse As Integer = 0
             For indexResponse = 0 To (intEstatusResponse.Length - 1) Step 1
 
-                Console.WriteLine("Evento[" + intEstatusResponse(indexResponse).ToString() + "] : " + IIf(intEstatusResponse(indexResponse) >= 0, "Ok", "Fail"))
+                Console.WriteLine("Evento[" + indexResponse.ToString() + "] : " + IIf(intEstatusResponse(indexResponse) >= 0, "Ok", "Fail"))
 
                 If intEstatusResponse(indexResponse) < 0 Then
                     'Aqui tus validaciones en caso de error'
