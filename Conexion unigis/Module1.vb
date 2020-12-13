@@ -49,7 +49,6 @@
         If intEstatusResponse < 0 Then
             'Aqui tus validaciones en caso de error'
             'Puedes guardar logs de los eventos que han fallado'
-            'el evento fallido es arrayEventos(indexResponse)'
         End If
 
     End Sub
